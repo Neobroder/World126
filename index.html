@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORLD 126 | UMBRELLA TACTICAL OS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oswald:wght@700&display=swap');
+
+        :root {
+            --hazard-red: #ff0000;
+            --terminal-cyan: #00f2ff;
+            --deep-black: #020202;
+            --gold-sexy: #ffcc00;
+            --panel-border: rgba(0, 242, 255, 0.3);
+            --bg-accent: rgba(10, 10, 10, 0.95);
+        }
+
+        body {
+            background-color: var(--deep-black);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, transparent 80%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 100%, 100% 4px, 4px 100%;
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header Estilo Terminal */
+        header {
+            border: 2px solid var(--hazard-red);
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            background: rgba(255, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .system-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 10px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 0 15px var(--hazard-red);
+        }
+
+        /* Contenedor Principal en Cuadrícula */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: var(--bg-accent);
+            border: 1px solid var(--panel-border);
+            padding: 20px;
+            position: relative;
+        }
+
+        .panel-header {
+            color: var(--terminal-cyan);
+            border-bottom: 1px solid var(--panel-border);
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Roster de Operativos */
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .char-card {
+            background: #111;
+            border: 1px solid #333;
+            overflow: hidden;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .char-card:hover {
+            border-color: var(--terminal-cyan);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .char-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            filter: grayscale(30%) sepia(20%) brightness(0.8);
+            border-bottom: 2px solid #222;
+        }
+
+        .char-info {
+            padding: 12px;
+            background: linear-gradient(to top, #000, transparent);
+        }
+
+        .player-tag {
+            display: block;
+            color: var(--hazard-red);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .unit-id {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Estilo Especial Neobroder */
+        .sexy-player {
+            border: 2px solid var(--gold-sexy) !important;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+        }
+
+        .sexy-player .char-img {
+            filter: contrast(1.1) brightness(1);
+        }
+
+        .sexy-player .player-tag {
+            color: var(--gold-sexy);
+            text-shadow: 0 0 5px var(--gold-sexy);
+        }
+
+        .sexy-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--gold-sexy);
+            color: #000;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* Widgets Laterales */
+        .widget-title {
+            color: var(--hazard-red);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--terminal-cyan);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        @media (max-width: 1200px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .side-panel { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="panel-header"><span>SECURE CONNECTION: ESTABLISHED</span><span>ID: WORLD_126_ROOT</span></div>
+    <h1 class="system-title">WORLD 126 | TACTICAL OS</h1>
+    <p style="color: var(--terminal-cyan); margin: 5px 0;">[ TRIUMVIRATE COMMAND: MAD | TWD | DWA ]</p>
+</header>
+
+<div class="dashboard">
+    <div class="panel side-panel">
+        <h2 class="widget-title">WORLD STATUS</h2>
+        <p style="font-size: 0.9rem; line-height: 1.6;">
+            World 126 in unity as a common front, with a global vision. 
+            Lead by the Triumvirate with the support of minor factions.
+        </p>
+        <div style="margin-top: 30px;">
+            <div class="widget-title" style="font-size: 0.9rem;">Global Force Rank</div>
+            <div style="font-size: 1.5rem; color: var(--gold-sexy);">#1 MVP FORCE</div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-header"><span>ELITE OPERATIVES DATABASE</span><span>COUNT: 11</span></div>
+        
+        <div class="roster-grid">
+            <div class="char-card sexy-player">
+                <div class="sexy-badge">S.E.X.Y STATUS</div>
+                <img src="img/criss.png" class="char-img" alt="Neobroder">
+                <div class="char-info">
+                    <span class="player-tag">NEOBRODER</span>
+                    <span class="unit-id">UNIT: CHRIS REDFIELD</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/leon.png" class="char-img" alt="Bootcher">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] BOOTCHER</span>
+                    <span class="unit-id">UNIT: LEON S. KENNEDY</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/bob.png" class="char-img" alt="BobbyKendo">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] BOBBYKENDO</span>
+                    <span class="unit-id">UNIT: BOB</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/carlos.png" class="char-img" alt="THEEND">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] THEEND</span>
+                    <span class="unit-id">UNIT: CARLOS OLIVEIRA</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/jill.png" class="char-img" alt="xladydragonx">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] XLADYDRAGONX</span>
+                    <span class="unit-id">UNIT: JILL VALENTINE</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/claire.png" class="char-img" alt="AliceLindelll">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] ALICELINDELLL</span>
+                    <span class="unit-id">UNIT: CLAIRE REDFIELD</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/barry.png" class="char-img" alt="wonky_will">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] WONKY_WILL</span>
+                    <span class="unit-id">UNIT: BARRY BURTON</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/jack.png" class="char-img" alt="Jack">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] JACK</span>
+                    <span class="unit-id">UNIT: JACK</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/alysa.png" class="char-img" alt="ErzaWesker">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] ERZAWESKER</span>
+                    <span class="unit-id">UNIT: WARREN</span>
+                </div>
+            </div>
+
+            <div class="char-card">
+                <img src="img/murpy.png" class="char-img" alt="BOOGEYMAN">
+                <div class="char-info">
+                    <span class="player-tag">[MAD] BOOGEYMAN</span>
+                    <span class="unit-id">UNIT: PATRICK</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel side-panel">
+        <h2 class="widget-title">FACTION LOGS</h2>
+        <div style="font-size: 0.8rem; color: #666;">
+            <p><span class="status-dot"></span> [MAD] Tactica Strike Active</p>
+            <p><span class="status-dot"></span> [TWD] Defense Protocols</p>
+            <p><span class="status-dot"></span> [DWA] Logistics Online</p>
+        </div>
+        <hr border="0" style="border-top: 1px solid #222; margin: 20px 0;">
+        <p style="font-size: 0.7rem; color: var(--hazard-red);">
+            WARNING: BIOLOGICAL THREAT DETECTED IN WORLD 126 SECTOR.
+        </p>
+    </div>
+</div>
+
+<footer style="text-align: center; margin-top: 50px; padding: 20px; color: #444; font-size: 0.8rem; border-top: 1px solid #111;">
+    TERMINAL ACCESS GRANTED TO: NEOBRODER | UMBRELLA CORP INFRASTRUCTURE
+</footer>
+
+</body>
+</html>
